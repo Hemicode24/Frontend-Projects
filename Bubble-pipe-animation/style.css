@@ -1,0 +1,230 @@
+:root {
+    --main-color: hsl(120, 60%, 50%);
+    --main-light: hsl(120, 60%, 60%);
+    --main-dark: hsl(120, 60%, 40%);
+    --shadow: hsl(120, 60%, 15%);
+  
+    --overlay-color: var(--main-light);
+    --overlay-border: var(--main-light);
+  
+    --pipe-base-height: 20rem;
+    --pipe-base-width: 22rem;
+  
+    --pipe-edge-width: 24rem;
+    --pipe-edge-offset: -1rem;
+    --pipe-edge-bread: 6rem;
+    --pipe-edge-filling: 7rem;
+  
+    --pipe-exit-bottom: 22rem;
+    --pipe-hole-height: 22rem;
+    --pipe-exit-height: 4rem;
+  
+    --pipe-overlay-height: 8rem;
+    --pipe-overlay-height-half: 4rem;
+    --pipe-overlay-height-quarter: 2rem;
+  
+    --bubble-color: hsl(250, 60%, 70%);
+    --bubble-light: hsl(210, 60%, 80%);
+    --bubble-dark: hsl(210, 60%, 60%);
+    
+  
+  }
+  
+  /**
+      rgba(200, 191, 244, 1) 0%,
+      rgba(111, 111, 178, 1) 50%,
+      rgba(200, 55, 158, 1) 100%
+  **/
+  
+  html {
+    font-size: clamp(6px, 1vh, 1vh);
+  }
+  
+  body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background: rgb(222, 191, 244);
+    background: linear-gradient(
+      75deg,
+      rgba(30, 120, 158, 1) 0%,
+      rgba(200, 222, 255, 1) 40%,
+      rgba(30, 120, 158, 1) 100%
+    );
+    overflow: hidden;
+  
+    background-color: #bf7347;
+    background-color: #bf7347;
+    background-color: #bf7347;
+    background-image: url("data:image/svg+xml,%3Csvg width='36' height='48' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23320e0e' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+  
+  .noise {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.1;
+    background-color: #524e4c;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='24' viewBox='0 0 12 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e6dcdc' fill-opacity='0.4'%3E%3Cpath d='M2 0h2v12H2V0zm1 20c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM9 8c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-1 4h2v12H8V12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .brick {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.95;
+    background-color: #bf7347b2;
+    background-image: url("data:image/svg+xml,%3Csvg width='168' height='176' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23874b32' fill-opacity='1'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .container {
+    position: relative;
+    height: 100vh;
+    width: var(--pipe-base-width);
+    margin: auto;
+  }
+  
+  .bubbles {
+    font-size: 12rem;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    opacity: 0.4;
+  }
+  
+  #bubbles-2 {
+    font-size: 15rem;
+  }
+  #bubbles-3 {
+    font-size: 12rem;
+  }
+  #bubbles-4 {
+    font-size: 15rem;
+  }
+  
+  .pipe-base {
+    position: absolute;
+    width: var(--pipe-base-width);
+    height: var(--pipe-base-height);
+    bottom: 0;
+    /*   background-color: var(--main-color); */
+    background: linear-gradient(90deg, var(--main-color), var(--main-dark));
+  }
+  
+  .pipe-exit {
+    position: absolute;
+    border-radius: 50%;
+  
+    bottom: var(--pipe-hole-height);
+    /* Uncomment bottom to make a better looking pipe. */
+    /* bottom: 23rem; */
+  
+    width: var(--pipe-base-width);
+    height: var(--pipe-exit-height);
+    background-color: var(--shadow);
+  }
+  
+  .pipe-edge-bottom {
+    position: absolute;
+    width: var(--pipe-edge-width);
+    height: var(--pipe-edge-bread);
+    background-color: var(--main-light);
+    bottom: 18rem;
+    border-radius: 50%;
+    left: var(--pipe-edge-offset);
+  }
+  
+  .pipe-edge-mid {
+    position: absolute;
+    width: var(--pipe-edge-width);
+    height: var(--pipe-edge-filling);
+    background-color: var(--main-light);
+    bottom: 18rem;
+    left: var(--pipe-edge-offset);
+  }
+  
+  .pipe-top {
+    position: absolute;
+    border-radius: 50%;
+    left: var(--pipe-edge-offset);
+    width: var(--pipe-edge-width);
+    height: var(--pipe-edge-bread);
+    background-color: var(--main-dark);
+    bottom: var(--pipe-exit-bottom);
+  
+    background: linear-gradient(275deg, var(--main-color), var(--main-dark));
+  }
+  
+  .overlay-top-outer {
+    box-sizing: border-box;
+    padding: 0;
+    position: absolute;
+    bottom: 26rem;
+    left: var(--pipe-edge-offset);
+    padding: 0;
+    height: var(--pipe-overlay-height-half);
+    width: var(--pipe-edge-width);
+  }
+  
+  .overlay-top-inner {
+    padding: 0;
+    height: var(--pipe-overlay-height);
+    width: var(--pipe-edge-width);
+    border-radius: 50%;
+    box-shadow: 0 var(--pipe-overlay-height-half) 0 var(--overlay-color);
+    border-bottom: var(--pipe-overlay-height-quarter) solid var(--overlay-border);
+  }
+  
+  .overlay-bottom-outer {
+    box-sizing: border-box;
+    padding: 0;
+    position: absolute;
+    bottom: 18rem;
+    left: var(--pipe-edge-offset);
+    height: var(--pipe-overlay-height);
+    width: var(--pipe-edge-width);
+  
+    /*   box-shadow: 0 4rem 0 red; */
+  }
+  
+  .overlay-bottom-inner {
+    padding: 0;
+    height: var(--pipe-overlay-height);
+    width: var(--pipe-edge-width);
+    border-radius: 50%;
+    box-shadow: 0 var(--pipe-overlay-height-half) 0 var(--overlay-color);
+  }
+  
+  .cartoon-bubble {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 8rem);
+    box-sizing: border-box;
+    background-color: var(--bubble-color);
+    height: 10rem;
+    width: 10rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    border: 0.5rem solid var(--bubble-dark);
+    opacity: 1;
+    box-shadow: inset 1rem -1rem 0 var(--bubble-dark);
+    opacity: 0.65;
+  }
+  
+  .cartoon-bubble > div {
+    border-right: 0.5em solid var(--bubble-light);
+    border-top: 0.5em solid var(--bubble-light);
+    transform: inherit;
+    border-bottom: 1em solid transparent;
+    border-left: 1em solid transparent;
+    border-radius: 40% 100% 40% 0;
+    aspect-ratio: 1;
+    margin: 1.25em 0 0 5.25em;
+    height: 1em;
+    width: 1em;
+  }
+  
+  
