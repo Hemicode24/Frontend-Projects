@@ -1,0 +1,25 @@
+.grid-container{
+    resize: horizontal;
+    overflow: auto;
+    height: auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #eeee;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.grid-item{
+    background-color: #fd1afd;
+    color: #fff;
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+}
